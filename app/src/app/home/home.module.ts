@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HomeRoutingModule } from './home-routing.module';
 import { ElectronicsComponent } from './electronics/electronics.component';
 
 
@@ -9,7 +10,8 @@ import { ElectronicsComponent } from './electronics/electronics.component';
     ElectronicsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HomeRoutingModule
   ]
 })
 export class HomeModule { }
