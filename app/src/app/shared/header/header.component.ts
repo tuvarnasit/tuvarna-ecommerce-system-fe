@@ -1,6 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from '../services/category.service';
+import { CartService } from '@/shared/services/cart.service';
+import { UtilsService } from '@/shared/services/utils.service';
 
 @Component({
   selector: 'app-header',
@@ -10,14 +12,16 @@ import { CategoryService } from '../services/category.service';
 export class HeaderComponent {
 
   public niceSelectOptions = [
-    { value: 'select-category', text: 'Избор на категория' },
+    { value: 'select-category', text: 'Филтър категория' },
   ];
   public searchText: string = '';
   public productType: string = '';
 
   constructor(
     private router: Router,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    public cartService: CartService,
+    public utilsService: UtilsService
   ) { }
 
   ngOnInit() {
