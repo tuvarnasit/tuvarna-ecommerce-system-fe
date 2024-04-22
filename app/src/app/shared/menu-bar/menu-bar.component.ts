@@ -114,7 +114,6 @@ export class MenuBarComponent {
             link: '/product/' + product.id
           }))
         }));
-        console.log(productMenus)
         this.menu_data.push({
           id: 3,
           link: '/shop',

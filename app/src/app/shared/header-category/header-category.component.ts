@@ -29,7 +29,6 @@ export class HeaderCategoryComponent {
           ...item,
           name: this.capitalizeFirstLetter(item.name)
         }));
-        console.log(this.categoryItems);
       },
       error: (error) => {
         console.error('Error fetching categories', error);
