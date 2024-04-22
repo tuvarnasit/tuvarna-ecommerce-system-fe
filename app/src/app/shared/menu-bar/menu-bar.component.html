@@ -54,7 +54,7 @@
 
     <ul *ngIf="item.product_menus" class="tp-submenu tp-mega-menu mega-menu-style-2">
       <li *ngFor="let prd_m of item.product_menus; let i = index" class="has-dropdown">
-        <a routerLink="/shop" class="mega-menu-title">Shop Page</a>
+        <a routerLink="/shop" class="mega-menu-title">{{ prd_m.title }}</a>
         <ul class="tp-submenu">
           <li *ngFor="let prd_sm of prd_m.dropdown_menus; let i = index">
             <a [routerLink]="prd_sm.link">{{ prd_sm.title }}</a>

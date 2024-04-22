@@ -1,6 +1,7 @@
 import { ICategory } from "./category-type";
 import { IProductImage } from "./product-image-type";
 import { IProductInventory } from "./product-inventory-type";
+import { ISaleItem } from "./sale-item-type";
 import { ITag } from "./tag-type";
 
 export interface IProduct {
@@ -15,4 +16,5 @@ export interface IProduct {
   tags: ITag[];
   images: IProductImage[];
   inventories: IProductInventory[];
+  sales: ISaleItem[];
 }
