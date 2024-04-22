@@ -33,19 +33,19 @@
         </div>
         <div class="col-lg-3">
           <div class="shop-mega-menu-img">
-            <img src="/assets/img/menu/product/menu-product-img-1.jpg" alt="" />
+            <img [src]="mobileDevicesBestSeller?.imageUrl || '/assets/img/menu/default.jpg'" alt="" />
             <div class="shop-mega-menu-btn">
-              <a routerLink="/shop?category=mobile-tablets"
-                class="tp-menu-showcase-btn tp-menu-showcase-btn-2">Phones</a>
+              <a [routerLink]="'/product/' + mobileDevicesBestSeller?.id"
+                 class="tp-menu-showcase-btn tp-menu-showcase-btn-2">{{ mobileDevicesBestSeller?.name || 'Phones' }}</a>
             </div>
           </div>
         </div>
         <div class="col-lg-3">
           <div class="shop-mega-menu-img">
-            <img src="/assets/img/menu/product/menu-product-img-2.jpg" alt="" />
+            <img [src]="smartWatchesBestSeller?.imageUrl || '/assets/img/menu/default.jpg'" alt="" />
             <div class="shop-mega-menu-btn">
-              <a routerLink="/shop?category=headphones"
-                class="tp-menu-showcase-btn tp-menu-showcase-btn-2">Headphones</a>
+              <a [routerLink]="'/product/' + smartWatchesBestSeller?.id"
+                 class="tp-menu-showcase-btn tp-menu-showcase-btn-2">{{ smartWatchesBestSeller?.name || 'Headphones' }}</a>
             </div>
           </div>
         </div>

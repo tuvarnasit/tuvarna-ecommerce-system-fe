@@ -12,7 +12,7 @@ import { UtilsService } from '@/shared/services/utils.service';
 export class HeaderComponent {
 
   public niceSelectOptions = [
-    { value: 'select-category', text: 'Филтър категория' },
+    { value: 'select-category', text: 'Нови категории' },
   ];
   public searchText: string = '';
   public productType: string = '';
@@ -31,8 +31,11 @@ export class HeaderComponent {
   loadCategories() {
     this.categoryService.getCategories().subscribe({
       next: (data) => {
+        const sortedCategories = data.categories
+          .sort((a: any, b: any) => b.id - a.id)
+          .slice(0, 4);
         this.niceSelectOptions = this.niceSelectOptions.concat(
-          data.categories.map((item: any) => ({
+          sortedCategories.map((item: any) => ({
             value: item.id,
             text: this.capitalizeFirstLetter(item.name)
           }))
@@ -43,7 +46,8 @@ export class HeaderComponent {
       }
     });
   }
-  
+
+
   capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }

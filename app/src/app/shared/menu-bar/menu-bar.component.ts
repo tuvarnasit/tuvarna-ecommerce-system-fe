@@ -5,6 +5,7 @@ import { ProductService } from '../services/product.service';
 import { CategoryService } from '../services/category.service';
 import { IProductAll } from '@/types/product-all-type';
 import { ICategory } from '@/types/category-type';
+import { IProduct } from '@/types/product-type';
 
 @Component({
   selector: 'app-menu-bar',
@@ -13,6 +14,8 @@ import { ICategory } from '@/types/category-type';
 })
 export class MenuBarComponent {
 
+  public mobileDevicesBestSeller: IProduct | null = null;
+  public smartWatchesBestSeller: IProduct | null = null;
   public menu_data: IMenuItem[] = [];
   private dailyCategories: string[] = ["мобилни устройства", "смарт часовници", "слушалки"];
   private gamingAndOffieCategories: string[] = ["офис компютри", "офис лаптопи",
@@ -59,20 +62,29 @@ export class MenuBarComponent {
   }
 
   loadCategoryData() {
-
     const requests = this.dailyCategories.map(category =>
       this.productService.getByCategoryName(category));
-
     forkJoin(requests).subscribe({
-      next: (categoriesData) => {
-        const shopMegaMenus = categoriesData.map((data, index) => ({
-          link: '/shop',
-          title: this.capitalizeFirstLetter(this.dailyCategories[index]),
-          list_menus: data.products.map(product => ({
-            title: product.name,
-            link: '/product/' + product.id
-          }))
-        }));
+      next: (categoriesData: IProductAll[]) => {
+        const shopMegaMenus = categoriesData.map((data, index) => {
+          const categoryName = this.dailyCategories[index];
+          const products = data.products;
+
+          if (categoryName === "мобилни устройства") {
+            this.mobileDevicesBestSeller = this.assignBestSeller(data.products);
+        } else if (categoryName === "смарт часовници") {
+            this.smartWatchesBestSeller = this.assignBestSeller(data.products);
+        }
+
+          return {
+            link: '/shop',
+            title: this.capitalizeFirstLetter(categoryName),
+            list_menus: products.map(product => ({
+              title: product.name,
+              link: '/product/' + product.id
+            }))
+          };
+        });
 
         this.menu_data.push({
           id: 2,
@@ -138,6 +150,27 @@ export class MenuBarComponent {
       error: (error) => console.error('Failed to fetch kitchen categories', error)
     });
   }
+
+  assignBestSeller(products: IProduct[]): IProduct | null {
+    if (!products.length) return null;
+
+    let bestSeller = products[0];
+    let maxSold = 0;
+
+    products.forEach(product => {
+        const totalSold = product.sales.reduce((acc, sale) => acc + sale.quantitySold, 0);
+        if (totalSold > maxSold) {
+            maxSold = totalSold;
+            bestSeller = product;
+        }
+    });
+
+    if (maxSold === 0) {
+        bestSeller = products[Math.floor(Math.random() * products.length)];
+    }
+
+    return bestSeller;
+}
 
   capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
