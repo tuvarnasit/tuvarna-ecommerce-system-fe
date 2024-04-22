@@ -28,6 +28,16 @@ export class HeaderComponent {
     this.loadCategories();
   }
 
+  headerSticky: boolean = false;
+
+  @HostListener('window:scroll', ['$event']) onscroll() {
+    if (window.scrollY > 80) {
+      this.headerSticky = true;
+    } else {
+      this.headerSticky = false;
+    }
+  }
+
   loadCategories() {
     this.categoryService.getCategories().subscribe({
       next: (data) => {
