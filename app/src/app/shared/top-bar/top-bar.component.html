@@ -1,0 +1,17 @@
+<div class="tp-header-top-menu d-flex align-items-center justify-content-end">
+  <div class="tp-header-top-menu-item tp-header-setting">
+    <span (click)="handleActive('setting')" class="tp-header-setting-toggle"
+      id="tp-header-setting-toggle">Карта на сайта</span>
+    <ul [ngClass]="isActive === 'setting' ? 'tp-setting-list-open' : ''">
+      <li>
+        <a routerLink="/shop">Магазин</a>
+      </li>
+      <li>
+        <a routerLink="/shop/cart">Количка</a>
+      </li>
+      <li>
+        <a routerLink="/pages/profile">Профил</a>
+      </li>
+    </ul>
+  </div>
+</div>
