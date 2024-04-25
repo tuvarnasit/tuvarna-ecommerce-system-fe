@@ -3,5 +3,5 @@ export interface IProductInventory {
   price: number;
   discountPrice?: number;
   stockQuantity: number;
-  importDate?: Date;
+  importDate: Date;
 }

@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { NiceSelectComponent } from './header/ui/nice-select/nice-select.component';
 import { HeaderCategoryComponent } from './header-category/header-category.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
-import { HeroBannerComponent } from './hero-banner/hero-banner.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,7 @@ import { HeroBannerComponent } from './hero-banner/hero-banner.component';
     HeaderComponent,
     NiceSelectComponent,
     HeaderCategoryComponent,
-    MenuBarComponent,
-    HeroBannerComponent
+    MenuBarComponent
   ],
   imports: [
     CommonModule,
@@ -26,9 +24,8 @@ import { HeroBannerComponent } from './hero-banner/hero-banner.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  exports:[
-    HeaderComponent,
-    HeroBannerComponent
+  exports: [
+    HeaderComponent
   ]
 })
 export class SharedModule { }
