@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { NiceSelectComponent } from './header/ui/nice-select/nice-select.component';
 import { HeaderCategoryComponent } from './header-category/header-category.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { SocialLinksComponent } from './social-links/social-links.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     HeaderComponent,
     NiceSelectComponent,
     HeaderCategoryComponent,
-    MenuBarComponent
+    MenuBarComponent,
+    SocialLinksComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,8 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     HttpClientModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
