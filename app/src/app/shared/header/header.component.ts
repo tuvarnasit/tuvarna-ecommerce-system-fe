@@ -12,7 +12,7 @@ import { UtilsService } from '@/shared/services/utils.service';
 export class HeaderComponent {
 
   public niceSelectOptions = [
-    { value: 'select-category', text: 'Нови категории' },
+    { value: '', text: 'Нови категории' },
   ];
   public searchText: string = '';
   public productType: string = '';
@@ -46,7 +46,7 @@ export class HeaderComponent {
           .slice(0, 4);
         this.niceSelectOptions = this.niceSelectOptions.concat(
           sortedCategories.map((item: any) => ({
-            value: item.id,
+            value: item.name,
             text: this.capitalizeFirstLetter(item.name)
           }))
         );

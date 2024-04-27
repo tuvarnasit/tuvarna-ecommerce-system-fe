@@ -36,7 +36,7 @@
               d="M16.434 18.0409C16.322 18.0409 16.23 18.1329 16.23 18.2459C16.231 18.4749 16.641 18.4729 16.64 18.2459C16.64 18.1329 16.547 18.0409 16.434 18.0409ZM16.434 19.5409C15.72 19.5409 15.14 18.9599 15.14 18.2459C15.14 17.5319 15.72 16.9519 16.434 16.9519C17.149 16.9519 17.73 17.5319 17.73 18.2459C17.73 18.9599 17.149 19.5409 16.434 19.5409Z"
               fill="currentColor" />
           </svg>
-          <span class="tp-product-tooltip">Add to Cart</span>
+          <span class="tp-product-tooltip">Добави в количката</span>
         </button>
         <a routerLink="/shop/cart" *ngIf="isItemInCart(product)" class="tp-product-action-btn tp-product-add-cart-btn"
           [class.active]="isItemInCart(product)">
@@ -62,7 +62,7 @@
               d="M16.434 18.0409C16.322 18.0409 16.23 18.1329 16.23 18.2459C16.231 18.4749 16.641 18.4729 16.64 18.2459C16.64 18.1329 16.547 18.0409 16.434 18.0409ZM16.434 19.5409C15.72 19.5409 15.14 18.9599 15.14 18.2459C15.14 17.5319 15.72 16.9519 16.434 16.9519C17.149 16.9519 17.73 17.5319 17.73 18.2459C17.73 18.9599 17.149 19.5409 16.434 19.5409Z"
               fill="currentColor" />
           </svg>
-          <span class="tp-product-tooltip">View Cart</span>
+          <span class="tp-product-tooltip">Виж количката</span>
         </a>
         <!-- <button type="button" class="tp-product-action-btn-3 tp-product-quick-view-btn"
           data-bs-toggle="modal" [attr.data-bs-target]="'#' + utilsService.modalId"
@@ -88,7 +88,7 @@
   <!-- product content -->
   <div class="tp-product-content">
     <div class="tp-product-category">
-      <a [routerLink]="['/shop/shop-details', product.id]">{{ product.category?.name ?? 'Без категория' }}</a>
+      <a [routerLink]="['/shop/shop-details', product.id]">{{ capitalizeFirstLetter(product.category?.name ?? 'Без категория') }}</a>
     </div>
     <h3 class="tp-product-title">
       <a [routerLink]="['/shop/shop-details', product.id]">
@@ -110,13 +110,13 @@
     <div class="tp-product-price-wrapper">
       <ng-container *ngIf="getFirstAvailableInventory(product) as inventory">
         <ng-container *ngIf="inventory.discountPrice; else noDiscount">
-          <span class="tp-product-price old-price">${{ inventory.price.toFixed(2) }}</span>
+          <span class="tp-product-price old-price">{{ inventory.price.toFixed(2) }} лв.</span>
           <span class="tp-product-price new-price">
-            ${{ inventory.discountPrice.toFixed(2) }}
+            {{ inventory.discountPrice.toFixed(2) }} лв.
           </span>
         </ng-container>
         <ng-template #noDiscount>
-          <span class="tp-product-price new-price">${{ inventory.price.toFixed(2) }}</span>
+          <span class="tp-product-price new-price">{{ inventory.price.toFixed(2) }} лв.</span>
         </ng-template>
       </ng-container>
     </div>
