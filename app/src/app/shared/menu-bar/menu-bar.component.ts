@@ -77,7 +77,7 @@ export class MenuBarComponent {
         }
 
           return {
-            link: `/shop`,
+            link: '/shop',
             title: categoryName,
             list_menus: products.map(product => ({
               title: product.name,
@@ -135,7 +135,7 @@ export class MenuBarComponent {
       next: (categories: ICategory[]) => {
         const dropdownMenus = categories.map(category => ({
           title: category.name,
-          link: `/shop`
+          link: '/shop'
         }));
 
         this.menu_data.push({
