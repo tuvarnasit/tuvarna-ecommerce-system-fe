@@ -4,26 +4,26 @@ import { IProduct } from '@/types/product-type';
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-product-item',
-  templateUrl: './product-item.component.html',
-  styleUrls: ['./product-item.component.scss']
+  selector: 'app-product-item-large',
+  templateUrl: './product-item-large.component.html',
+  styleUrls: ['./product-item-large.component.scss']
 })
-export class ProductItemComponent {
+export class ProductItemLargeComponent {
 
   @Input() product!: IProduct;
-  @Input() offer_style: Boolean | undefined;
+  @Input() spacing: Boolean = true;
 
   constructor(
     public utilsService: UtilsService,
   ) { }
 
-  addToCart(product: IProduct) {
-  }
+  addToCart(product: IProduct) { }
 
   isItemInCart(item: IProduct): boolean {
-    return false
-    //return this.cartService.getCartProducts().some((prd: IProduct) => prd.id === item.id);
+    return false;
+    // return this.cartService.getCartProducts().some((prd: IProduct) => prd.id === item.id);
   }
+
 
   productStatus(product: IProduct): boolean {
 
@@ -42,7 +42,7 @@ export class ProductItemComponent {
   }
 
   getLatestInventory(product: IProduct): IProductInventory | undefined {
-    
+
     if (!product.inventories || product.inventories.length === 0) {
       return undefined;
     }

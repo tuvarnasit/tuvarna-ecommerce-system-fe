@@ -5,12 +5,14 @@ import { NgxSliderModule } from 'ngx-slider-v2';
 import { SharedModule } from '@/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ProductItemLargeComponent } from './product-item-large/product-item-large.component';
 
 
 
 @NgModule({
   declarations: [
-    ProductItemComponent
+    ProductItemComponent,
+    ProductItemLargeComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   exports: [
-    ProductItemComponent
+    ProductItemComponent,
+    ProductItemLargeComponent
   ]
 })
 export class ShopModule { }

@@ -10,6 +10,7 @@ import { HeaderCategoryComponent } from './header-category/header-category.compo
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
 import { FooterComponent } from './footer/footer.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
     HeaderCategoryComponent,
     MenuBarComponent,
     SocialLinksComponent,
-    FooterComponent
+    FooterComponent,
+    BreadcrumbComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,9 @@ import { FooterComponent } from './footer/footer.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BreadcrumbComponent,
+    NiceSelectComponent
   ]
 })
 export class SharedModule { }
