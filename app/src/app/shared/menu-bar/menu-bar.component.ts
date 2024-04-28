@@ -77,8 +77,8 @@ export class MenuBarComponent {
         }
 
           return {
-            link: '/shop',
-            title: this.capitalizeFirstLetter(categoryName),
+            link: `/shop`,
+            title: categoryName,
             list_menus: products.map(product => ({
               title: product.name,
               link: '/product/' + product.id
@@ -107,7 +107,7 @@ export class MenuBarComponent {
       next: (categoriesData) => {
         const productMenus = categoriesData.map((data, index) => ({
           id: index + 1,
-          title: this.capitalizeFirstLetter(this.gamingAndOffieCategories[index]),
+          title: this.gamingAndOffieCategories[index],
           link: `/category/${data.products[0]?.category?.id}`,
           dropdown_menus: data.products.map(product => ({
             title: product.name,
@@ -134,8 +134,8 @@ export class MenuBarComponent {
     forkJoin(requests).subscribe({
       next: (categories: ICategory[]) => {
         const dropdownMenus = categories.map(category => ({
-          title: this.capitalizeFirstLetter(category.name),
-          link: `/category/${category.id}`
+          title: category.name,
+          link: `/shop`
         }));
 
         this.menu_data.push({

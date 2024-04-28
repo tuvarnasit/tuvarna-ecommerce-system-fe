@@ -4,16 +4,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { ShopModule } from './shop/shop.module';
+import { ShopComponent } from './shop/pages/shop/shop.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     ShopModule
+  ],
+  exports: [
+    ShopComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
