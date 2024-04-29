@@ -6,24 +6,41 @@ import { SharedModule } from '@/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ProductItemLargeComponent } from './product-item-large/product-item-large.component';
-
+import { ShopRoutingModule } from './shop-routing.module';
+import { ShopAreaComponent } from './shop-area/shop-area.component';
+import { PriceFilterComponent } from './filtering/price-filter/price-filter.component';
+import { StatusFilterComponent } from './filtering/status-filter/status-filter.component';
+import { CategoryFilterComponent } from './filtering/category-filter/category-filter.component';
+import { ResetFilterRouteComponent } from './filtering/reset-filter-route/reset-filter-route.component';
+import { ProductItemListComponent } from './product-item-list/product-item-list.component';
+import { ShopComponent } from './pages/shop/shop.component';
 
 
 @NgModule({
   declarations: [
     ProductItemComponent,
-    ProductItemLargeComponent
+    ProductItemLargeComponent,
+    ShopAreaComponent,
+    PriceFilterComponent,
+    StatusFilterComponent,
+    CategoryFilterComponent,
+    ResetFilterRouteComponent,
+    ProductItemListComponent,
+    ShopComponent
   ],
   imports: [
     CommonModule,
     NgxSliderModule,
     SharedModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ShopRoutingModule
   ],
   exports: [
     ProductItemComponent,
-    ProductItemLargeComponent
+    ProductItemLargeComponent,
+    ShopAreaComponent,
+    PriceFilterComponent
   ]
 })
 export class ShopModule { }

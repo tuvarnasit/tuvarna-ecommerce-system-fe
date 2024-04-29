@@ -46,12 +46,7 @@ export class HeaderCategoryComponent {
   }
 
   public handleParentCategory(value: string): void {
-    const newCategory = value.toLowerCase().replace("&", "").split(" ").join("-");
+    const newCategory = value.toLowerCase();
     this.router.navigate(['/shop'], { queryParams: { category: newCategory } });
-  }
-
-  public handleSubCategory(value: string): void {
-    const newCategory = value.toLowerCase().replace("&", "").split(" ").join("-");
-    this.router.navigate(['/shop'], { queryParams: { subcategory: newCategory } });
   }
 }

@@ -11,6 +11,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     MenuBarComponent,
     SocialLinksComponent,
     FooterComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     HeaderComponent,
     FooterComponent,
     BreadcrumbComponent,
-    NiceSelectComponent
+    NiceSelectComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

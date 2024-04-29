@@ -1,0 +1,15 @@
+<div class="tp-shop-widget-content">
+  <div class="tp-shop-widget-filter">
+    <div id="slider-range" class="mb-10">
+      <ngx-slider [(value)]="min" [(highValue)]="max" [options]="options" (userChangeEnd)="appliedFilter($event)"
+        *ngIf="isBrowser">
+      </ngx-slider>
+    </div>
+    <div class="tp-shop-widget-filter-info d-flex align-items-center justify-content-between">
+      <span class="input-range">
+        {{ min }} лв. - {{ max }} лв.
+      </span>
+      <button (click)="handlePriceRoute()" class="tp-shop-widget-filter-btn" type="button">Филтър</button>
+    </div>
+  </div>
+</div>
