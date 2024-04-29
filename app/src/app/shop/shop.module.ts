@@ -13,6 +13,7 @@ import { StatusFilterComponent } from './filtering/status-filter/status-filter.c
 import { CategoryFilterComponent } from './filtering/category-filter/category-filter.component';
 import { ResetFilterRouteComponent } from './filtering/reset-filter-route/reset-filter-route.component';
 import { ProductItemListComponent } from './product-item-list/product-item-list.component';
+import { ShopComponent } from './pages/shop/shop.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ProductItemListComponent } from './product-item-list/product-item-list.
     StatusFilterComponent,
     CategoryFilterComponent,
     ResetFilterRouteComponent,
-    ProductItemListComponent
+    ProductItemListComponent,
+    ShopComponent
   ],
   imports: [
     CommonModule,
