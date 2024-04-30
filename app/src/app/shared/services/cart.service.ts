@@ -19,7 +19,21 @@ export class CartService {
     return state.cart_products;
   }
 
-  handleOpenCartSidebar () {
+  handleOpenCartSidebar() {
     this.isCartOpen = !this.isCartOpen
   }
+
+  decrement() {
+    return this.orderQuantity =
+      this.orderQuantity > 1
+        ? this.orderQuantity - 1
+        : this.orderQuantity = 1;
+  }
+
+  increment() {
+    return this.orderQuantity = this.orderQuantity + 1;
+  }
+
+  addCartProduct(payload: IProduct) {
+  };
 }

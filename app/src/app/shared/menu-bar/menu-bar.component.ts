@@ -47,7 +47,7 @@ export class MenuBarComponent {
             id: product.id,
             title: product.name,
             img: product.imageUrl,
-            link: '/product/' + product.id
+            link: '/shop/product-details/' + product.id
           }))
         }];
 
@@ -81,7 +81,7 @@ export class MenuBarComponent {
             title: categoryName,
             list_menus: products.map(product => ({
               title: product.name,
-              link: '/product/' + product.id
+              link: '/shop/product-details/' + product.id
             }))
           };
         });
@@ -111,7 +111,7 @@ export class MenuBarComponent {
           link: `/category/${data.products[0]?.category?.id}`,
           dropdown_menus: data.products.map(product => ({
             title: product.name,
-            link: '/product/' + product.id
+            link: '/shop/product-details/' + product.id
           }))
         }));
         this.menu_data.push({

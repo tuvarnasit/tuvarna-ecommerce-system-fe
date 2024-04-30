@@ -45,7 +45,6 @@ export class TrendingProductsComponent {
           product.inventories && product.inventories.length > 0
         );
         this.filteredProducts = this.getFilteredProducts();
-        console.log(this.electronic_prd)
       },
       error: (error) => {
         console.error('Failed to fetch products', error);

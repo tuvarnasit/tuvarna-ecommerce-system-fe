@@ -1,6 +1,7 @@
 import { ICategory } from '@/types/category-type';
 import { Component } from '@angular/core';
 import { CategoryService } from '../../shared/services/category.service';
+import { IProduct } from '@/types/product-type';
 
 @Component({
   selector: 'app-category-overview',
@@ -15,7 +16,6 @@ export class CategoryOverviewComponent {
 
   ngOnInit() {
     this.loadCategories();
-    console.log(this.category_items)
   }
 
   loadCategories() {
@@ -24,20 +24,22 @@ export class CategoryOverviewComponent {
         this.category_items = (categories.categories as ICategory[])
           .map(category => ({
             ...category,
-            name: this.capitalizeFirstLetter(category.name)
+            name: this.capitalizeFirstLetter(category.name),
+            products: category.products.filter((product: IProduct) =>
+              product.inventories && product.inventories.length > 0)
           }))
-          .sort((a, b) => (b.products.length - a.products.length))
+          .sort((a, b) => b.products.length - a.products.length)
           .slice(0, 5);
       },
       error: (error) => {
         console.error('Failed to fetch categories', error);
-        this.category_items = [];
+        this.category_items = []; // Optionally handle error by setting to empty array
       }
     });
   }
-  
+
   capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  
+
 }

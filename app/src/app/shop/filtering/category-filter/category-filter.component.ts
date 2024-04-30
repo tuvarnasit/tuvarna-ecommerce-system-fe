@@ -33,7 +33,12 @@ export class CategoryFilterComponent {
   loadCategories(): void {
     this.categoryService.getCategories().subscribe({
       next: (data: { categories: ICategory[] }) => {
-        this.categoryData = data.categories;
+        this.categoryData = data.categories.map(category => ({
+          ...category,
+          products: category.products.filter(product => 
+            product.inventories && product.inventories.length > 0
+          )
+        }));
       },
       error: (error) => {
         console.error('Error fetching categories:', error);

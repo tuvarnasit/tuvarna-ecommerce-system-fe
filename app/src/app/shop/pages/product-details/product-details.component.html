@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<main *ngIf="product">
+  <app-breadcrumb-product-details [product]="product"></app-breadcrumb-product-details>
+  <section class="tp-product-details-area">
+    <div class="tp-product-details-top pb-115">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-7 col-lg-6">
+            <app-product-details-thumb [product]="product"></app-product-details-thumb>
+          </div>
+          <div class="col-xl-5 col-lg-6">
+            <app-product-details-wrapper [product]="product" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tp-product-details-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <app-product-details-tab-nav [product]="product"></app-product-details-tab-nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-product-details-related-products [productId]="product.id" [category]="capitalizeFirstLetter(product.category?.name ?? '(Без категория)')" />
+</main>
+
+<!-- footer start -->
+<app-footer></app-footer>
+<!-- footer end -->
