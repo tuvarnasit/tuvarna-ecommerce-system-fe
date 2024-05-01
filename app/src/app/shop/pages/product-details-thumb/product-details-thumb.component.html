@@ -1,0 +1,16 @@
+<div class="tp-product-details-thumb-wrapper tp-tab d-sm-flex">
+  <nav>
+    <div class="nav nav-tabs flex-sm-column" id="productDetailsNavThumb" role="tablist">
+      <button *ngFor="let item of images; let i = index"
+        [class.active]="item.imageUrl === productService.activeImg"
+        (click)="productService.handleImageActive(item.imageUrl)" type="button" class="nav-link">
+        <img [src]="item.imageUrl" alt="nav-img" style="background-color: #F4F5F7;" />
+      </button>
+    </div>
+  </nav>
+  <div class="tab-content m-img" id="productDetailsNavContent">
+    <div class="tp-product-details-nav-main-thumb" style="background-color: #f5f6f8">
+      <img [src]="productService.activeImg" alt="prd-image" />
+    </div>
+  </div>
+</div>

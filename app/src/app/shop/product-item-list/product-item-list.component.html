@@ -1,6 +1,6 @@
 <div class="tp-product-list-item d-md-flex">
   <div class="tp-product-list-thumb p-relative fix">
-    <a [routerLink]="['/shop/shop-details', product.id]" style="height: 310px;background-color: #f2f3f5;">
+    <a [routerLink]="['/shop/product-details', product.id]" style="height: 310px;background-color: #f2f3f5;">
       <img [src]="product.imageUrl" alt="product-img">
     </a>
 
@@ -51,11 +51,11 @@
   <div class="tp-product-list-content">
     <div class="tp-product-content-2 pt-15">
       <div class="tp-product-tag-2">
-        <a [routerLink]="['/shop/shop-details', product.id]">{{ capitalizeFirstLetter(product.category?.name ?? 'Без
+        <a [routerLink]="['/shop/product-details', product.id]">{{ capitalizeFirstLetter(product.category?.name ?? 'Без
           категория') }}</a>
       </div>
       <h3 class="tp-product-title-2">
-        <a [routerLink]="['/shop/shop-details', product.id]">{{product.name}}</a>
+        <a [routerLink]="['/shop/product-details', product.id]">{{product.name}}</a>
       </h3>
       <div class="tp-product-rating-icon tp-product-rating-icon-2">
         <span><i class="fa-solid fa-star"></i></span>

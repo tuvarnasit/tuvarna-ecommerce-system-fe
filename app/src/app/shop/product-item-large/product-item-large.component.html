@@ -1,6 +1,6 @@
 <div [ngClass]="['tp-product-item-2',spacing ? 'mb-40' : '']">
   <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img" style="background-color: #f2f3f5">
-    <a [routerLink]="['/shop/shop-details', product.id]">
+    <a [routerLink]="['/shop/product-details', product.id]">
       <img [src]="product.imageUrl" alt="">
     </a>
 
@@ -103,10 +103,10 @@
   </div>
   <div class="tp-product-content-2 pt-15">
     <div class="tp-product-tag-2">
-      <a [routerLink]="['/shop/shop-details', product.id]">{{ capitalizeFirstLetter(product.category?.name ?? 'Без категория') }}</a>
+      <a [routerLink]="['/shop/product-details', product.id]">{{ capitalizeFirstLetter(product.category?.name ?? 'Без категория') }}</a>
     </div>
     <h3 class="tp-product-title-2">
-      <a [routerLink]="['/shop/shop-details', product.id]">{{product.name}}</a>
+      <a [routerLink]="['/shop/product-details', product.id]">{{product.name}}</a>
     </h3>
     <div class="tp-product-rating-icon tp-product-rating-icon-2">
       <span><i class="fa-solid fa-star"></i></span>

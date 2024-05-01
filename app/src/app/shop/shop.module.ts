@@ -14,6 +14,11 @@ import { CategoryFilterComponent } from './filtering/category-filter/category-fi
 import { ResetFilterRouteComponent } from './filtering/reset-filter-route/reset-filter-route.component';
 import { ProductItemListComponent } from './product-item-list/product-item-list.component';
 import { ShopComponent } from './pages/shop/shop.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { ProductDetailsThumbComponent } from './pages/product-details-thumb/product-details-thumb.component';
+import { ProductDetailsWrapperComponent } from './pages/product-details-wrapper/product-details-wrapper.component';
+import { ProductDetailsTabNavComponent } from './pages/product-details-tab-nav/product-details-tab-nav.component';
+import { ProductDetailsRelatedProductsComponent } from './pages/product-details-related-products/product-details-related-products.component';
 
 
 @NgModule({
@@ -26,7 +31,12 @@ import { ShopComponent } from './pages/shop/shop.component';
     CategoryFilterComponent,
     ResetFilterRouteComponent,
     ProductItemListComponent,
-    ShopComponent
+    ShopComponent,
+    ProductDetailsComponent,
+    ProductDetailsThumbComponent,
+    ProductDetailsWrapperComponent,
+    ProductDetailsTabNavComponent,
+    ProductDetailsRelatedProductsComponent
   ],
   imports: [
     CommonModule,

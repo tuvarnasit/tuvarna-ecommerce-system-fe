@@ -26,7 +26,8 @@ export class StatusFilterComponent {
   }
 
   handleStatusRoute(status: string): void {
-    const newStatus = status.toLowerCase().split(' ').join('-');
+    //const newStatus = status.toLowerCase().split(' ').join('-');
+    const newStatus = status.toLowerCase();
     // Define the query parameters as an object
     const queryParams: Params = {
       status: newStatus,

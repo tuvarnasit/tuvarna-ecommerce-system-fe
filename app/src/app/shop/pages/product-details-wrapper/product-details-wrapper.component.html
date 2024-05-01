@@ -1,0 +1,117 @@
+<div class="tp-product-details-wrapper has-sticky">
+  <div class="tp-product-details-category">
+    <span>{{ capitalizeFirstLetter(product.category?.name ?? '(Без категория)') }}</span>
+  </div>
+  <h3 class="tp-product-details-title">{{ product.name }}</h3>
+
+  <!-- inventory details -->
+  <div class="tp-product-details-inventory d-flex align-items-center mb-10">
+    <div class="tp-product-details-stock mb-10">
+      <span *ngIf="getFirstAvailableInventory(product).stockQuantity > 0; else outOfStock">Наличен</span>
+      <ng-template #outOfStock><span>Изчерпан</span></ng-template>
+    </div>
+    <div class="tp-product-details-rating-wrapper d-flex align-items-center mb-10">
+      <div class="tp-product-details-rating">
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+      </div>
+      <div class="tp-product-details-reviews">
+        <span>(7 Ревюта)</span>
+      </div>
+    </div>
+  </div>
+  <p>
+    {{ product.shortDescription }}
+  </p>
+
+  <!-- price -->
+  <div class="tp-product-details-price-wrapper mb-20">
+    <div *ngIf="getFirstAvailableInventory(product).discountPrice">
+      <span class="tp-product-details-price old-price">{{ getFirstAvailableInventory(product).price }} лв.</span>
+      <span class="tp-product-details-price new-price">
+        {{ getFirstAvailableInventory(product).discountPrice }} лв.
+      </span>
+    </div>
+    <div *ngIf="!getFirstAvailableInventory(product).discountPrice">
+      <span class="tp-product-details-price">{{ getFirstAvailableInventory(product).price }} лв.</span>
+    </div>
+  </div>
+
+  <!-- actions -->
+  <div class="tp-product-details-action-wrapper">
+    <h3 class="tp-product-details-action-title">Количество</h3>
+    <div class="tp-product-details-action-item-wrapper d-flex align-items-center">
+      <div class="tp-product-details-quantity">
+        <div class="tp-product-quantity mb-15 mr-15">
+          <span (click)="cartService.decrement()" class="tp-cart-minus">
+            <svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+          <input class="tp-cart-input" type="text" [value]="cartService.orderQuantity" disabled>
+          <span (click)="cartService.increment()" class="tp-cart-plus">
+            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 6H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M5.5 10.5V1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div class="tp-product-details-add-to-cart mb-15 w-100">
+        <button (click)="cartService.addCartProduct(product)" class="tp-product-details-add-to-cart-btn w-100">Добави в
+          количката</button>
+      </div>
+    </div>
+    <a [routerLink]="['/pages/checkout']" class="tp-product-details-buy-now-btn w-100 text-center">Купи сега</a>
+  </div>
+
+  <div *ngIf="isShowBottom">
+    <div class="tp-product-details-action-sm">
+      <div class="tp-product-details-query">
+        <div class="tp-product-details-query-item d-flex align-items-center">
+          <span>SKU: </span>
+          <p>{{product.sku}}</p>
+        </div>
+        <div class="tp-product-details-query-item d-flex align-items-center">
+          <span>Категория: </span>
+          <p>{{ capitalizeFirstLetter(product.category?.name ?? '(Без категория)') }}</p>
+        </div>
+        <ng-container *ngIf="product.tags?.length">
+          <div class="tp-product-details-query-item d-flex align-items-center">
+            <span>Тагове: </span>
+            <p>{{ getFormattedTags(product.tags) }}</p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div>
+      <div class="tp-product-details-query">
+      </div>
+      <div class="tp-product-details-social">
+        <span>Споделяне:</span>
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-vimeo-v"></i></a>
+      </div>
+      <div class="tp-product-details-msg mb-15">
+        <ul>
+          <li>30 дена безплатно връщане</li>
+          <li>Поръчки, направени преди 14:30, се изпращат в същия ден</li>
+        </ul>
+      </div>
+      <div class="tp-product-details-payment d-flex align-items-center flex-wrap justify-content-between">
+        <p>Гарантирано сигурено <br> & безопасно плащане</p>
+        <img src="/assets/img/product/icons/payment-option.png" alt="">
+      </div>
+    </div>
+  </div>
+
+</div>

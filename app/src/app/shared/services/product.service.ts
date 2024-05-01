@@ -10,16 +10,34 @@ import { IProductInventory } from '@/types/product-inventory-type';
 })
 export class ProductService {
 
+  activeImg: string | undefined;
+
   private baseUrl: string = 'http://localhost:5141/api/v1/products';
 
   constructor(private http: HttpClient) { }
 
   getAllProducts(): Observable<IProductAll> {
-    return this.http.get<IProductAll>(this.baseUrl);
+    return this.http.get<IProductAll>(this.baseUrl).pipe(
+      map(response => {
+        const filteredProducts = response.products.filter(product =>
+          product.inventories && product.inventories.length > 0);
+        return { ...response, products: filteredProducts };
+      })
+    );
   }
 
   getByCategoryName(name: string): Observable<IProductAll> {
-    return this.http.get<IProductAll>(`${this.baseUrl}/category/${name}`);
+    return this.http.get<IProductAll>(`${this.baseUrl}/category/${name}`).pipe(
+      map(response => {
+        const filteredProducts = response.products.filter(product =>
+          product.inventories && product.inventories.length > 0);
+        return { ...response, products: filteredProducts };
+      })
+    );
+  }
+
+  getById(id: string): Observable<IProduct> {
+    return this.http.get<IProduct>(`${this.baseUrl}/${id}`);
   }
 
   getMaxPrice(): Observable<number> {
@@ -125,5 +143,9 @@ export class ProductService {
       endIndex: endIndex,
       pages: pages
     };
+  }
+
+  handleImageActive(img: string) {
+    this.activeImg = img;
   }
 }

@@ -1,6 +1,6 @@
 <div [ngClass]="['tp-product-item', 'p-relative', 'transition-3', offer_style ? 'tp-product-offer-item' : 'mb-25']">
   <div class="tp-product-thumb p-relative fix m-img">
-    <a [routerLink]="['/shop/shop-details', product.id]">
+    <a [routerLink]="['/shop/product-details', product.id]">
       <img [src]="product.imageUrl" alt="product-electronic">
     </a>
 
@@ -88,10 +88,10 @@
   <!-- product content -->
   <div class="tp-product-content">
     <div class="tp-product-category">
-      <a [routerLink]="['/shop/shop-details', product.id]">{{ capitalizeFirstLetter(product.category?.name ?? 'Без категория') }}</a>
+      <a [routerLink]="['/shop/product-details', product.id]">{{ capitalizeFirstLetter(product.category?.name ?? 'Без категория') }}</a>
     </div>
     <h3 class="tp-product-title">
-      <a [routerLink]="['/shop/shop-details', product.id]">
+      <a [routerLink]="['/shop/product-details', product.id]">
         {{product.name}}
       </a>
     </h3>

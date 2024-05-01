@@ -12,6 +12,7 @@ import { SocialLinksComponent } from './social-links/social-links.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { BreadcrumbProductDetailsComponent } from './breadcrumb-product-details/breadcrumb-product-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     SocialLinksComponent,
     FooterComponent,
     BreadcrumbComponent,
-    PaginationComponent
+    PaginationComponent,
+    BreadcrumbProductDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     FooterComponent,
     BreadcrumbComponent,
     NiceSelectComponent,
-    PaginationComponent
+    PaginationComponent,
+    BreadcrumbProductDetailsComponent
   ]
 })
 export class SharedModule { }

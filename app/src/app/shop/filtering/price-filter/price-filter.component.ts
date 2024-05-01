@@ -40,7 +40,6 @@ export class PriceFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateMaxPrice();
-    console.log(this.price.maxPrice)
   }
 
   private updateMaxPrice() {
