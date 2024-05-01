@@ -109,7 +109,7 @@
                         stroke-linejoin="round" />
                     </svg>
                     <span class="tp-header-action-badge">
-                      10
+                      {{cartService.totalPriceQuantity().quantity}}
                     </span>
                   </button>
                 </div>
@@ -218,7 +218,7 @@
                     stroke-linejoin="round" />
                 </svg>
                 <span class="tp-header-action-badge">
-                  10
+                  {{cartService.totalPriceQuantity().quantity}}
                 </span>
               </button>
             </div>
@@ -237,3 +237,5 @@
     </div>
   </div>
 </div>
+
+<app-cart-sidebar></app-cart-sidebar>
