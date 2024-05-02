@@ -1,3 +1,4 @@
+import { CartService } from '@/shared/services/cart.service';
 import { IProductInventory } from '@/types/product-inventory-type';
 import { IProduct } from '@/types/product-type';
 import { Component, Input } from '@angular/core';
@@ -11,15 +12,15 @@ export class ProductItemListComponent {
 
   @Input() product!: IProduct;
 
-  constructor() { }
+  constructor(public cartService: CartService) { }
 
-  addToCart(product: IProduct) { }
-
-  isItemInCart(item: IProduct): boolean {
-    return false;
-    // return this.cartService.getCartProducts().some((prd: IProduct) => prd.id === item.id);
+  addToCart(product: IProduct) {
+    this.cartService.addCartProduct(product);
   }
 
+  isItemInCart(item: IProduct): boolean {
+    return this.cartService.getCartProducts().some((prd: IProduct) => prd.id === item.id);
+  }
 
   productStatus(product: IProduct): boolean {
 

@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { BreadcrumbProductDetailsComponent } from './breadcrumb-product-details/breadcrumb-product-details.component';
+import { CartSidebarComponent } from './cart-sidebar/cart-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BreadcrumbProductDetailsComponent } from './breadcrumb-product-details/
     FooterComponent,
     BreadcrumbComponent,
     PaginationComponent,
-    BreadcrumbProductDetailsComponent
+    BreadcrumbProductDetailsComponent,
+    CartSidebarComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { BreadcrumbProductDetailsComponent } from './breadcrumb-product-details/
     BreadcrumbComponent,
     NiceSelectComponent,
     PaginationComponent,
-    BreadcrumbProductDetailsComponent
+    BreadcrumbProductDetailsComponent,
+    CartSidebarComponent
   ]
 })
 export class SharedModule { }

@@ -17,4 +17,5 @@ export interface IProduct {
   images: IProductImage[];
   inventories: IProductInventory[];
   sales: ISaleItem[];
+  orderQuantity?: number;
 }

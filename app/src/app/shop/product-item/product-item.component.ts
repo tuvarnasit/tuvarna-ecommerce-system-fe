@@ -1,3 +1,4 @@
+import { CartService } from '@/shared/services/cart.service';
 import { UtilsService } from '@/shared/services/utils.service';
 import { IProductInventory } from '@/types/product-inventory-type';
 import { IProduct } from '@/types/product-type';
@@ -15,9 +16,11 @@ export class ProductItemComponent {
 
   constructor(
     public utilsService: UtilsService,
+    private cartService: CartService
   ) { }
 
   addToCart(product: IProduct) {
+    this.cartService.addCartProduct(product);
   }
 
   isItemInCart(item: IProduct): boolean {
