@@ -19,6 +19,7 @@ import { ProductDetailsThumbComponent } from './pages/product-details-thumb/prod
 import { ProductDetailsWrapperComponent } from './pages/product-details-wrapper/product-details-wrapper.component';
 import { ProductDetailsTabNavComponent } from './pages/product-details-tab-nav/product-details-tab-nav.component';
 import { ProductDetailsRelatedProductsComponent } from './pages/product-details-related-products/product-details-related-products.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ProductDetailsRelatedProductsComponent } from './pages/product-details-
     ProductDetailsThumbComponent,
     ProductDetailsWrapperComponent,
     ProductDetailsTabNavComponent,
-    ProductDetailsRelatedProductsComponent
+    ProductDetailsRelatedProductsComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

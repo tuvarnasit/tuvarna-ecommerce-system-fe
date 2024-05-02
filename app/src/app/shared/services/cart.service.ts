@@ -154,4 +154,12 @@ export class CartService {
     }
     return { price: 0, discountPrice: 0 };
   }
+
+  public getPriceForProductAsNumber(product: IProduct): number {
+    const availableInventory = product.inventories?.find(inv => inv.stockQuantity > 0);
+    if (availableInventory) {
+      return availableInventory.discountPrice ?? availableInventory.price;
+    }
+    return 0;
+  }
 }

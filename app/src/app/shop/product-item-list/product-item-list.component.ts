@@ -22,7 +22,6 @@ export class ProductItemListComponent {
     return this.cartService.getCartProducts().some((prd: IProduct) => prd.id === item.id);
   }
 
-
   productStatus(product: IProduct): boolean {
 
     if (!product.inventories || product.inventories.length === 0) {
