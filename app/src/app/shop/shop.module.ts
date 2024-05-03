@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { NgxSliderModule } from 'ngx-slider-v2';
 import { SharedModule } from '@/shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ProductItemLargeComponent } from './product-item-large/product-item-large.component';
 import { ShopRoutingModule } from './shop-routing.module';
@@ -20,6 +20,7 @@ import { ProductDetailsWrapperComponent } from './pages/product-details-wrapper/
 import { ProductDetailsTabNavComponent } from './pages/product-details-tab-nav/product-details-tab-nav.component';
 import { ProductDetailsRelatedProductsComponent } from './pages/product-details-related-products/product-details-related-products.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CartComponent } from './pages/cart/cart.component';
     ProductDetailsWrapperComponent,
     ProductDetailsTabNavComponent,
     ProductDetailsRelatedProductsComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { CartComponent } from './pages/cart/cart.component';
     SharedModule,
     FormsModule,
     RouterModule,
-    ShopRoutingModule
+    ShopRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     ProductItemComponent,

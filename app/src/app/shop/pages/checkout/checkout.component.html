@@ -1,0 +1,278 @@
+<app-header></app-header>
+
+<main>
+  <!-- breadcrumb area start -->
+  <div style="background-color: #EFF1F5;">
+    <app-breadcrumb title="Заплащане" subtitle="Заплащане"></app-breadcrumb>
+  </div>
+  <!-- breadcrumb area end -->
+
+  <!-- checkout area start -->
+  <section class="tp-checkout-area pb-120" style="background-color: #EFF1F5;">
+    <div class="container">
+      <div *ngIf="cartService.getCartProducts().length === 0;else checkoutBlock" class="text-center pt-50">
+        <h3 class="py-2">Не бяха открити продукти за заплащане</h3>
+        <a routerLink="/shop" class="tp-checkout-btn">
+          Връщане към магазина
+        </a>
+      </div>
+
+      <ng-template #checkoutBlock>
+        <div class="row">
+          <div class="col-xl-7 col-lg-7">
+            <div class="tp-checkout-verify">
+              <!-- <div class="tp-checkout-verify-item">
+                <p class="tp-checkout-verify-reveal">Returning customer?
+                  <button (click)="handleOpenLogin()" type="button" class="tp-checkout-login-form-reveal-btn">Click here
+                    to login
+                  </button>
+                </p>
+                <div *ngIf="isOpenLogin" id="tpReturnCustomerLoginForm" class="tp-return-customer">
+                  <app-login-form></app-login-form>
+                </div>
+              </div> -->
+              <div class="tp-checkout-verify-item">
+                <p class="tp-checkout-verify-reveal">Имаш код за отстъпка?
+                  <button (click)="handleOpenCoupon()" type="button" class="tp-checkout-coupon-form-reveal-btn">Натисни
+                    тук да го въведеш
+                  </button>
+                </p>
+                <div *ngIf="isOpenCoupon" id="tpCheckoutCouponForm" class="tp-return-customer">
+                  <form (ngSubmit)="handleCouponSubmit()">
+                    <div class="tp-return-customer-input">
+                      <label>Код за отстъпка:</label>
+                      <input type="text" placeholder="Въведи код за отстъпка" [(ngModel)]="couponCode"
+                        name="couponCode">
+                    </div>
+                    <button type="submit" class="tp-return-customer-btn tp-checkout-btn">
+                      Приложи
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="tp-checkout-bill-area">
+                  <h3 class="tp-checkout-bill-title">Информация за поръчка</h3>
+                  <div class="tp-checkout-bill-form">
+                    <div class="tp-checkout-bill-inner">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="tp-checkout-input">
+                            <label>Име <span>*</span></label>
+                            <input type="text" placeholder="Име" name="firstName" formControlName="firstName">
+                            <span *ngIf="firstName?.hasError('required') && (firstName?.touched ||formSubmitted)"
+                              class="text-danger">
+                              'Име' е задължително поле
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="tp-checkout-input">
+                            <label>Фамилия <span>*</span></label>
+                            <input type="text" placeholder="Фамилия" name="lastName" formControlName="lastName">
+                            <span *ngIf="lastName?.hasError('required') && (lastName?.touched ||formSubmitted)"
+                              class="text-danger">
+                              'Фамилия' е задължително поле
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="tp-checkout-input">
+                            <label>Фирма (по избор)</label>
+                            <input type="text" placeholder="Тек ООД." name="company" formControlName="company">
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="tp-checkout-input">
+                            <label>Държава <span>*</span></label>
+                            <app-nice-select [options]="countrySelectOptions" name="Избери държава" [defaultCurrent]="0"
+                              (onChange)="changeHandler($event)" placeholder="Избери държава">
+                            </app-nice-select>
+                            <!-- <input type="text" placeholder="United States (US)" name="country"
+                              formControlName="country"> -->
+                            <span *ngIf="country?.hasError('required') && (country?.touched ||formSubmitted)"
+                              class="text-danger">
+                              'Държава' е задължително поле
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="tp-checkout-input">
+                            <label>Град <span>*</span></label>
+                            <input type="text" placeholder="Град" name="city" formControlName="city">
+                            <span *ngIf="city?.hasError('required') && (city?.touched ||formSubmitted)"
+                              class="text-danger">
+                              'Град' е задължително поле
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="tp-checkout-input">
+                            <label>Област <span>*</span></label>
+                            <input type="text" placeholder="Област" name="state" formControlName="state">
+                            <span *ngIf="state?.hasError('required') && (state?.touched ||formSubmitted)"
+                              class="text-danger">
+                              'Област' е задължително поле
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="tp-checkout-input">
+                            <label>Пощенски код <span>*</span></label>
+                            <input type="text" placeholder="zip code" name="zipCode" formControlName="zipCode">
+                            <span *ngIf="zipCode?.hasError('required') && (zipCode?.touched ||formSubmitted)"
+                              class="text-danger">
+                              'Пощенски код' е задължително поле
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="tp-checkout-input">
+                            <label>Адрес <span>*</span></label>
+                            <input type="text" placeholder="Улица, номер, етаж, апартамент" name="address"
+                              formControlName="address">
+                            <span *ngIf="address?.hasError('required') && (address?.touched ||formSubmitted)"
+                              class="text-danger">
+                              'Адрес' е задължително поле
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="tp-checkout-input">
+                            <label>Телефон за връзка <span>*</span></label>
+                            <input type="text" placeholder="Телефонен номер" name="phone" formControlName="phone">
+                            <span *ngIf="phone?.hasError('required') && (phone?.touched ||formSubmitted)"
+                              class="text-danger">
+                              'Телефон за връзка' е задължително поле
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="tp-checkout-input">
+                            <label>Имейл адрес <span>*</span></label>
+                            <input type="email" placeholder="Имейл" name="email" formControlName="email">
+                            <span
+                              *ngIf="(email?.hasError('required') && email?.touched) || (email?.hasError('email') && email?.dirty) || (formSubmitted && !email?.value)"
+                              class="text-danger">
+                              'Имейл' е задължително поле и трябва да е валиден имейл адрес
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="tp-checkout-input">
+                            <label>Бележки от клиента (по избор)</label>
+                            <textarea name="orderNote" formControlName="orderNote"
+                              placeholder="Уточняване на адрес и начин за доставка..."></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <!-- checkout place order -->
+                <div class="tp-checkout-place white-bg">
+                  <h3 class="tp-checkout-place-title">Вашата поръчка</h3>
+
+                  <div class="tp-order-info-list">
+                    <ul>
+
+                      <!-- header -->
+                      <li class="tp-order-info-list-header">
+                        <h4>Продукт</h4>
+                        <h4>Общо</h4>
+                      </li>
+
+                      <!-- item list -->
+                      <li *ngFor="let item of cartService.getCartProducts()" class="tp-order-info-list-desc">
+                        <p>{{item.name}} <span> x {{item.orderQuantity}}</span></p>
+                        <span *ngIf="cartService.getPriceForProduct(item).discountPrice; else noDiscount">
+                          {{ cartService.getPriceForProduct(item).discountPrice.toFixed(2) }} лв.
+                        </span>
+                        <ng-template #noDiscount>
+                          <span>{{ cartService.getPriceForProduct(item).price.toFixed(2) }} лв.</span>
+                        </ng-template>
+                      </li>
+
+                      <li class="tp-order-info-list-subtotal">
+                        <span>Общо дължимо</span>
+                        <span>{{cartService.totalPriceQuantity().total.toFixed(2)}} лв<div class=""></div></span>
+                      </li>
+
+                      <li class="tp-order-info-list-shipping">
+                        <span>Доставка</span>
+                        <div class="tp-order-info-list-shipping-item d-flex flex-column align-items-end">
+                          <span *ngIf="cartService.totalPriceQuantity().total <= 100">
+                            <input id="flat_rate" type="radio" name="shipping" value="PAID_ADDRESS"
+                              formControlName="shipping">
+                            <label (click)="handleShippingCost(9)" for="flat_rate">Личен адрес:
+                              <span>9.00 лв.</span></label>
+                          </span>
+                          <span *ngIf="cartService.totalPriceQuantity().total <= 100">
+                            <input id="local_pickup" type="radio" name="shipping" value="PAID_OFFICE"
+                              formControlName="shipping">
+                            <label (click)="handleShippingCost(5)" for="local_pickup">Офис на куриер:
+                              <span>5.00 лв.</span></label>
+                          </span>
+                          <span *ngIf="cartService.totalPriceQuantity().total > 100">
+                            <input id="free_shipping" type="radio" name="shipping" value="FREE_ADDRESS"
+                              formControlName="shipping">
+                            <label (click)="handleShippingCost('free')" for="free_shipping">Безплатна доставка до
+                              адрес</label>
+                          </span>
+                          <span *ngIf="cartService.totalPriceQuantity().total > 100">
+                            <input id="free_shipping" type="radio" name="shipping" value="FREE_OFFICE"
+                              formControlName="shipping">
+                            <label (click)="handleShippingCost('free')" for="free_shipping">Безплатна доставка до
+                              офис</label>
+                          </span>
+                          <span *ngIf="shipping?.hasError('required') && (shipping?.touched ||formSubmitted)"
+                            class="text-danger">
+                            'Метод на доставка' е задължително поле
+                          </span>
+                        </div>
+                      </li>
+                      <li class="tp-order-info-list-total">
+                        <span>Общо дължимо</span>
+                        <span>
+                          {{getTotalPrice().toFixed(2)}} лв.
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tp-checkout-payment">
+                    <div class="tp-checkout-payment-item">
+                      <input type="radio" id="back_transfer" name="payment" formControlName="payment"
+                        value="CASH_ON_DELIVERY">
+                      <label (click)="handlePayment('bank')" for="back_transfer"
+                        data-bs-toggle="direct-bank-transfer">Наложен платеж</label>
+                      <br>
+                      <span *ngIf="payment?.hasError('required') && (payment?.touched ||formSubmitted)"
+                        class="text-danger">
+                        'Начин на плащане' е задължително поле
+                      </span>
+                      <div *ngIf="payment_name === 'bank'" class="tp-checkout-payment-desc direct-bank-transfer">
+                        <p>Заплащане на куриер при получаване на поръчката.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tp-checkout-btn-wrapper">
+                    <button type="submit" class="tp-checkout-btn w-100">Приключване на поръчката</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>
