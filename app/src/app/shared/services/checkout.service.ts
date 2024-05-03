@@ -22,6 +22,8 @@ export class CheckoutService {
     PhoneNumber: string;
     OrderNotes?: string;
     DiscountPercentage?: number;
+    PaymentType: string;
+    ShippingType: string;
     Items: Array<{ QuantitySold: number; ProductId: number; }>
   }) {
     return this.http.post(this.apiUrl, data);
