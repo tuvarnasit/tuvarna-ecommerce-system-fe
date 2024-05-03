@@ -130,15 +130,20 @@ export class CartService {
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
   };
 
-  clear_cart() {
-    const confirmMsg = window.confirm(
-      "Are you sure deleted your all cart items ?"
-    );
-    if (confirmMsg) {
-      state.cart_products = [];
+  clear_cart(askConfirmation: boolean = true): void {
+    
+    let proceed = true;
+  
+    if (askConfirmation) {
+      // Only ask for confirmation if askConfirmation is true
+      proceed = window.confirm("Are you sure you want to delete all your cart items?");
     }
-    localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
-  };
+  
+    if (proceed) {
+      state.cart_products = [];
+      localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
+    }
+  }
 
   initialOrderQuantity() {
     return this.orderQuantity = 1;
