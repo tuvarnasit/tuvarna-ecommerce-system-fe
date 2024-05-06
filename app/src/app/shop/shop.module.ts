@@ -21,6 +21,7 @@ import { ProductDetailsTabNavComponent } from './pages/product-details-tab-nav/p
 import { ProductDetailsRelatedProductsComponent } from './pages/product-details-related-products/product-details-related-products.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { PagesModule } from '../pages/pages.module';
 
 
 @NgModule({
