@@ -1,3 +1,4 @@
+import { ICustomer } from '@/types/customer-type';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -49,5 +50,10 @@ export class UserService {
       }
     }
     return null;
+  }
+
+  getCustomerByUsername(username: string): Observable<ICustomer> {
+    const url = `${this.baseUrl}/customer/${username}`;
+    return this.http.get<ICustomer>(url);
   }
 }

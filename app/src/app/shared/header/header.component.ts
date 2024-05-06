@@ -18,7 +18,8 @@ export class HeaderComponent {
   public searchText: string = '';
   public productType: string = '';
   isLoggedIn = false;
-  userName: string = '';
+  userNameGreeting: string = '';
+  username: string = '';
 
   constructor(
     private router: Router,
@@ -33,7 +34,8 @@ export class HeaderComponent {
     if (this.isLoggedIn) {
       const jwtPayload = this.userService.decodeJWT();
       if (jwtPayload) {
-        this.userName = `Здравей, ${jwtPayload.sub}`;
+        this.userNameGreeting = `Здравей, ${jwtPayload.sub}`;
+        this.username = jwtPayload.sub;
       }
     }
     this.loadCategories();

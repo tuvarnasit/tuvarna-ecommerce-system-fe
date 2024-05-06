@@ -74,7 +74,7 @@
           <div class="col-xl-4 col-lg-3 col-md-8 col-6">
             <div class="tp-header-main-right d-flex align-items-center justify-content-end">
               <div class="tp-header-login d-none d-lg-block">
-                <a [routerLink]="isLoggedIn ? '/pages/profile' : '/pages/login'" class="d-flex align-items-center">
+                <a [routerLink]="isLoggedIn ? ['/pages/profile', username] : '/pages/login'" class="d-flex align-items-center">
                   <div class="tp-header-login-icon">
                     <span>
                       <!-- SVG remains unchanged -->
@@ -85,7 +85,7 @@
                     </span>
                   </div>
                   <div class="tp-header-login-content d-none d-xl-block">
-                    <span>{{ isLoggedIn ? userName : 'Влизане' }}</span>
+                    <span>{{ isLoggedIn ? userNameGreeting : 'Влизане' }}</span>
                     <h5 class="tp-header-login-title">{{ isLoggedIn ? 'Вашият акаунт' : 'Към вход' }}</h5>
                   </div>
                 </a>

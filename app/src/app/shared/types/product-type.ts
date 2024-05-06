@@ -18,4 +18,5 @@ export interface IProduct {
   inventories: IProductInventory[];
   sales: ISaleItem[];
   orderQuantity?: number;
+  isFeatured: boolean;
 }
