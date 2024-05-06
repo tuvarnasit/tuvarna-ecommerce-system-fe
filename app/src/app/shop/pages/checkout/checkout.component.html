@@ -31,7 +31,12 @@
                   <app-login-form></app-login-form>
                 </div>
               </div> -->
-              <div class="tp-checkout-verify-item">
+              <div *ngIf="!isLoggedIn" class="tp-checkout-verify-item">
+                <p class="tp-checkout-verify-reveal">Необходимо е да влезеш в профила си, за да направиш поръчка! 
+                  <button (click)="handleOpenLogin()" type="button" class="tp-checkout-coupon-form-reveal-btn">Натисни тук за влизане</button>
+                </p>
+              </div>
+              <div *ngIf="isLoggedIn" class="tp-checkout-verify-item">
                 <p class="tp-checkout-verify-reveal">Имаш код за отстъпка?
                   <button (click)="handleOpenCoupon()" type="button" class="tp-checkout-coupon-form-reveal-btn">Натисни
                     тук да го въведеш
@@ -53,7 +58,7 @@
             </div>
           </div>
 
-          <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+          <form *ngIf="userService.isLoggedIn()" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="col-lg-7">
                 <div class="tp-checkout-bill-area">

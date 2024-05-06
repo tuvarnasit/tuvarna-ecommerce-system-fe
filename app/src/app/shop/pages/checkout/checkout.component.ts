@@ -1,7 +1,9 @@
 import { CartService } from '@/shared/services/cart.service';
 import { CheckoutService } from '@/shared/services/checkout.service';
+import { UserService } from '@/shared/services/user.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -11,7 +13,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CheckoutComponent {
 
-  isOpenLogin = false;
   isOpenCoupon = false;
   shipCost: number = 0;
   couponCode: string = '';
@@ -19,15 +20,19 @@ export class CheckoutComponent {
   discountPercent: number = 0;
   public checkoutForm!: FormGroup;
   public formSubmitted = false;
+  isLoggedIn = false;
+  userEmail: string = '';
 
   constructor(
     public cartService: CartService,
     private checkoutService: CheckoutService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    public userService: UserService,
+    private router: Router
   ) { }
 
   handleOpenLogin() {
-    this.isOpenLogin = !this.isOpenLogin;
+    this.router.navigate(['/pages/login']);
   }
 
   handleOpenCoupon() {
@@ -75,6 +80,14 @@ export class CheckoutComponent {
   }
 
   ngOnInit() {
+    this.isLoggedIn = this.userService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const jwtPayload = this.userService.decodeJWT();
+      if (jwtPayload) {
+        this.userEmail = jwtPayload.email;
+      }
+    }
+    console.log(this.userEmail)
     this.initializeForm();
   }
 
@@ -120,7 +133,8 @@ export class CheckoutComponent {
         DiscountPercentage: this.discountPercent,
         PaymentType: formValue.payment,
         ShippingType: formValue.shipping,
-        Items: items
+        Items: items,
+        CustomerEmail: this.userEmail
       };
       this.checkoutService.createOrder(orderData).subscribe({
         next: (response) => {

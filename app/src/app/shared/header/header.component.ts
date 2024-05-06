@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CategoryService } from '../services/category.service';
 import { CartService } from '@/shared/services/cart.service';
 import { UtilsService } from '@/shared/services/utils.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -16,15 +17,25 @@ export class HeaderComponent {
   ];
   public searchText: string = '';
   public productType: string = '';
+  isLoggedIn = false;
+  userName: string = '';
 
   constructor(
     private router: Router,
     private categoryService: CategoryService,
     public cartService: CartService,
-    public utilsService: UtilsService
+    public utilsService: UtilsService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.isLoggedIn = this.userService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const jwtPayload = this.userService.decodeJWT();
+      if (jwtPayload) {
+        this.userName = `Здравей, ${jwtPayload.sub}`;
+      }
+    }
     this.loadCategories();
   }
 
