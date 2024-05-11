@@ -27,7 +27,7 @@ import { CartSidebarComponent } from './cart-sidebar/cart-sidebar.component';
     BreadcrumbComponent,
     PaginationComponent,
     BreadcrumbProductDetailsComponent,
-    CartSidebarComponent
+    CartSidebarComponent,
   ],
   imports: [
     CommonModule,
