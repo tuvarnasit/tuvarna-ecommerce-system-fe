@@ -30,7 +30,7 @@ export class TrendingProductsComponent {
     if (this.activeTab === 'Нови') {
       return this.electronic_prd.slice(0, 8);
     } else if (this.activeTab === 'Подбрани') {
-      return this.getRandomProducts(this.electronic_prd, 8);
+      return this.getFeaturedProducts(this.electronic_prd, 8);
     } else if (this.activeTab === 'Най-продавани') {
       return this.getTopSellers(this.electronic_prd, 8);
     } else {
@@ -50,6 +50,10 @@ export class TrendingProductsComponent {
         console.error('Failed to fetch products', error);
       }
     });
+  }
+
+  private getFeaturedProducts(products: IProduct[], count: number): IProduct[] {
+    return products.filter(product => product.isFeatured).slice(0, count);
   }
 
   private getRandomProducts(products: IProduct[], count: number): IProduct[] {
