@@ -121,16 +121,14 @@ export class ShopAreaComponent {
     this.products = this.products.slice(this.paginate.startIndex, this.paginate.endIndex + 1);
   }
 
-  // Append filter value to Url
   updateFilter(tags: any) {
-    tags.page = null; // Reset Pagination
+    tags.page = null;
   }
 
   changeFilterSelect(selectedOption: { value: string, text: string }) {
     this.sortByFilter(selectedOption.value)
   }
 
-  // SortBy Filter
   sortByFilter(value:string) {
     this.router.navigate([], {
       relativeTo: this.route,
@@ -143,7 +141,6 @@ export class ShopAreaComponent {
     });
   }
 
-  // product Pagination
   setPage(page: number) {
     this.router.navigate([], {
       relativeTo: this.route,
@@ -152,7 +149,7 @@ export class ShopAreaComponent {
       skipLocationChange: false
     }).finally(() => {
       this.viewScroller.setOffset([120, 120]);
-      this.viewScroller.scrollToAnchor('products'); // Anchore Link
+      this.viewScroller.scrollToAnchor('products');
     });
   }
 

@@ -18,6 +18,6 @@ export class PaginationComponent {
   ngOnInit(): void {}
 
   pageSet(page: number) {
-    this.setPage.emit(page); // Set Page Number
+    this.setPage.emit(page);
   }
 }

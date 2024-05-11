@@ -33,7 +33,6 @@ export interface IMenuItem {
   }[];
 }
 
-// mobile menu type 
 export interface IMobileType {
   id: number;
   homes?: boolean;

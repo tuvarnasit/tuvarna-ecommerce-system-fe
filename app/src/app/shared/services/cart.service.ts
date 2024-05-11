@@ -69,7 +69,6 @@ export class CartService {
         let quantityLeft = orderQuantity;
         let totalForProduct = 0;
 
-        // Sort inventories by import date to use the freshest inventory first
         const sortedInventories = (product.inventories || []).sort((a, b) =>
           new Date(b.importDate).getTime() - new Date(a.importDate).getTime()
         );
@@ -136,7 +135,6 @@ export class CartService {
     let proceed = true;
   
     if (askConfirmation) {
-      // Only ask for confirmation if askConfirmation is true
       proceed = window.confirm("Are you sure you want to delete all your cart items?");
     }
   
