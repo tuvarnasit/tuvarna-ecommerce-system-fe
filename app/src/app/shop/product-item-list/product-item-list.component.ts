@@ -1,4 +1,5 @@
 import { CartService } from '@/shared/services/cart.service';
+import { UtilsService } from '@/shared/services/utils.service';
 import { WishlistService } from '@/shared/services/wishlist.service';
 import { IProductInventory } from '@/types/product-inventory-type';
 import { IProduct } from '@/types/product-type';
@@ -13,7 +14,7 @@ export class ProductItemListComponent {
 
   @Input() product!: IProduct;
 
-  constructor(public cartService: CartService, public wishlistService: WishlistService) { }
+  constructor(public cartService: CartService, public wishlistService: WishlistService, public utilsService: UtilsService) { }
 
   addToCart(product: IProduct) {
     this.cartService.addCartProduct(product);

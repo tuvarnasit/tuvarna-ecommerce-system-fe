@@ -26,9 +26,7 @@ export class StatusFilterComponent {
   }
 
   handleStatusRoute(status: string): void {
-    //const newStatus = status.toLowerCase().split(' ').join('-');
     const newStatus = status.toLowerCase();
-    // Define the query parameters as an object
     const queryParams: Params = {
       status: newStatus,
     };
@@ -36,13 +34,13 @@ export class StatusFilterComponent {
     this.router
       .navigate([], {
         relativeTo: this.route,
-        queryParams, // Pass the queryParams object here
+        queryParams,
         queryParamsHandling: 'merge',
         skipLocationChange: false,
       })
       .finally(() => {
         this.viewScroller.setOffset([120, 120]);
-        this.viewScroller.scrollToAnchor('products'); // Anchore Link
+        this.viewScroller.scrollToAnchor('products');
       });
   }
 }

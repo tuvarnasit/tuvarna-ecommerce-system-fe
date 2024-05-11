@@ -44,9 +44,7 @@ export class PriceFilterComponent implements OnInit {
 
   private updateMaxPrice() {
     this.productService.getMaxPrice().subscribe(maxPrice => {
-      // Ensure Angular detects the change by creating a new object
       this.options = { ...this.options, ceil: maxPrice };
-      // Also update maxPrice for other uses
       this.max = maxPrice;
     });
   }

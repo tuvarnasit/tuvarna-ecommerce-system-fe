@@ -34,13 +34,12 @@ export class ProductDetailsThumbComponent implements OnChanges {
     }
 
     const mainImage: IProductImage = {
-      id: -1, // Special ID for the main image
+      id: -1,
       imageUrl: this.product.imageUrl
     };
 
     const additionalImages = this.product.images || [];
 
-    // Ensure the main image is not duplicated
     if (!additionalImages.some(img => img.imageUrl === this.product.imageUrl)) {
       this.images = [mainImage, ...additionalImages];
     } else {

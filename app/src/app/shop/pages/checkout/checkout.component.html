@@ -98,8 +98,6 @@
                             <app-nice-select [options]="countrySelectOptions" name="Избери държава" [defaultCurrent]="0"
                               (onChange)="changeHandler($event)" placeholder="Избери държава">
                             </app-nice-select>
-                            <!-- <input type="text" placeholder="United States (US)" name="country"
-                              formControlName="country"> -->
                             <span *ngIf="country?.hasError('required') && (country?.touched ||formSubmitted)"
                               class="text-danger">
                               'Държава' е задължително поле

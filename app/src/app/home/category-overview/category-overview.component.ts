@@ -33,7 +33,7 @@ export class CategoryOverviewComponent {
       },
       error: (error) => {
         console.error('Failed to fetch categories', error);
-        this.category_items = []; // Optionally handle error by setting to empty array
+        this.category_items = [];
       }
     });
   }

@@ -21,8 +21,8 @@ import { ProductDetailsTabNavComponent } from './pages/product-details-tab-nav/p
 import { ProductDetailsRelatedProductsComponent } from './pages/product-details-related-products/product-details-related-products.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { PagesModule } from '../pages/pages.module';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { ProductModalComponent } from './product-modal/product-modal.component';
 
 
 @NgModule({
@@ -43,7 +43,8 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
     ProductDetailsRelatedProductsComponent,
     CartComponent,
     CheckoutComponent,
-    WishlistComponent
+    WishlistComponent,
+    ProductModalComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +59,8 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
     ProductItemComponent,
     ProductItemLargeComponent,
     ShopAreaComponent,
-    PriceFilterComponent
+    PriceFilterComponent,
+    ProductModalComponent
   ]
 })
 export class ShopModule { }
