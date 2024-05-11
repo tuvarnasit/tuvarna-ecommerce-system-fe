@@ -4,6 +4,7 @@ import { CategoryService } from '../services/category.service';
 import { CartService } from '@/shared/services/cart.service';
 import { UtilsService } from '@/shared/services/utils.service';
 import { UserService } from '../services/user.service';
+import { WishlistService } from '../services/wishlist.service';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +27,8 @@ export class HeaderComponent {
     private categoryService: CategoryService,
     public cartService: CartService,
     public utilsService: UtilsService,
-    private userService: UserService
+    private userService: UserService,
+    public wishlistService: WishlistService
   ) { }
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 import { CartService } from '@/shared/services/cart.service';
 import { UtilsService } from '@/shared/services/utils.service';
+import { WishlistService } from '@/shared/services/wishlist.service';
 import { IProductInventory } from '@/types/product-inventory-type';
 import { IProduct } from '@/types/product-type';
 import { Component, Input } from '@angular/core';
@@ -16,7 +17,8 @@ export class ProductItemComponent {
 
   constructor(
     public utilsService: UtilsService,
-    private cartService: CartService
+    private cartService: CartService,
+    public wishlistService: WishlistService
   ) { }
 
   addToCart(product: IProduct) {
@@ -24,8 +26,7 @@ export class ProductItemComponent {
   }
 
   isItemInCart(item: IProduct): boolean {
-    return false
-    //return this.cartService.getCartProducts().some((prd: IProduct) => prd.id === item.id);
+    return this.cartService.getCartProducts().some((prd: IProduct) => prd.id === item.id);
   }
 
   productStatus(product: IProduct): boolean {
@@ -45,7 +46,7 @@ export class ProductItemComponent {
   }
 
   getLatestInventory(product: IProduct): IProductInventory | undefined {
-    
+
     if (!product.inventories || product.inventories.length === 0) {
       return undefined;
     }
@@ -56,5 +57,13 @@ export class ProductItemComponent {
 
   capitalizeFirstLetter(inputString: string): string {
     return inputString.charAt(0).toUpperCase() + inputString.slice(1);
+  }
+
+  addToWishlist(product: IProduct) {
+    this.wishlistService.add_wishlist_product(product);
+  }
+
+  isItemInWishlist(item: IProduct): boolean {
+    return this.wishlistService.getWishlistProducts().some((prd: IProduct) => prd.id === item.id);
   }
 }

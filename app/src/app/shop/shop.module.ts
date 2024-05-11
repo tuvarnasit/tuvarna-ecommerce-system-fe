@@ -22,6 +22,7 @@ import { ProductDetailsRelatedProductsComponent } from './pages/product-details-
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PagesModule } from '../pages/pages.module';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { PagesModule } from '../pages/pages.module';
     ProductDetailsTabNavComponent,
     ProductDetailsRelatedProductsComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    WishlistComponent
   ],
   imports: [
     CommonModule,

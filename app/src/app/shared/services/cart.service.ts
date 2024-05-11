@@ -38,19 +38,20 @@ export class CartService {
         orderQuantity: 1,
       };
       state.cart_products.push(newItem);
-      this.toastrService.success(`${payload.name} added to cart`);
+      this.toastrService.success(`${payload.name} е добавен в количката.`);
     } else {
       state.cart_products.map((item: IProduct) => {
         if (item.id === payload.id) {
           if (typeof item.orderQuantity !== "undefined") {
+            console.log(totalStock)
             if (totalStock >= item.orderQuantity + this.orderQuantity) {
               item.orderQuantity =
                 this.orderQuantity !== 1
                   ? this.orderQuantity + item.orderQuantity
                   : item.orderQuantity + 1;
-              this.toastrService.success(`${this.orderQuantity} ${item.name} added to cart`);
+              this.toastrService.success(`${this.orderQuantity} ${item.name} е добавен в количката.`);
             } else {
-              this.toastrService.success(`No more quantity available for this product!`);
+              this.toastrService.error(`Няма повече наличност от този продукт!`);
               this.orderQuantity = 1;
             }
           }
@@ -83,8 +84,8 @@ export class CartService {
           }
         }
 
-        if (quantityLeft > 0) { // If not enough inventory, log it
-          this.toastrService.warning(`Not enough inventory for ${product.name}, missing ${quantityLeft} items.`);
+        if (quantityLeft > 0) {
+          this.toastrService.warning(`Няма достатъчно бройки ${product.name}, липсват ${quantityLeft} броя.`);
         }
 
         cartTotal.total += totalForProduct;
@@ -113,7 +114,7 @@ export class CartService {
         if (typeof item.orderQuantity !== "undefined") {
           if (item.orderQuantity > 1) {
             item.orderQuantity = item.orderQuantity - 1;
-            this.toastrService.info(`Decrement Quantity For ${item.name}`);
+            this.toastrService.info(`Количеството на ${item.name} е намалено.`);
           }
         }
       }

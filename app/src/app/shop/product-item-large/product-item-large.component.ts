@@ -1,5 +1,6 @@
 import { CartService } from '@/shared/services/cart.service';
 import { UtilsService } from '@/shared/services/utils.service';
+import { WishlistService } from '@/shared/services/wishlist.service';
 import { IProductInventory } from '@/types/product-inventory-type';
 import { IProduct } from '@/types/product-type';
 import { Component, Input } from '@angular/core';
@@ -16,7 +17,8 @@ export class ProductItemLargeComponent {
 
   constructor(
     public utilsService: UtilsService,
-    private cartService: CartService
+    private cartService: CartService,
+    public wishlistService: WishlistService
   ) { }
 
   addToCart(product: IProduct) { 
@@ -55,5 +57,13 @@ export class ProductItemLargeComponent {
 
   capitalizeFirstLetter(inputString: string): string {
     return inputString.charAt(0).toUpperCase() + inputString.slice(1);
+  }
+
+  addToWishlist(product: IProduct) {
+    this.wishlistService.add_wishlist_product(product);
+  }
+
+  isItemInWishlist(item: IProduct): boolean {
+    return this.wishlistService.getWishlistProducts().some((prd: IProduct) => prd.id === item.id);
   }
 }

@@ -4,6 +4,7 @@ import { ShopComponent } from './pages/shop/shop.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
     title: 'Shop Checkout Page'
+  },
+  {
+    path: 'wishlist',
+    component: WishlistComponent,
+    title: 'Списък с желания'
   }
 ];
 
